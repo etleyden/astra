@@ -15,3 +15,7 @@ directory, no matter the file, it will re-compile your JS into
 something most browsers can understand, and also trigger a refresh
 in your browser tab. Leave this running in the background as you 
 write code. 
+
+### Adding a component
+
+To add a component, create a `ComponentName.js` and `ComponentName.css` in `src/components`.
