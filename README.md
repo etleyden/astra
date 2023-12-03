@@ -18,4 +18,4 @@ write code.
 
 ### Adding a component
 
-To add a component, create a `ComponentName.js` and `ComponentName.css` in `src/components`.
+To add a component, create a `ComponentName.jsx` and `ComponentName.css` in `src/components`.
