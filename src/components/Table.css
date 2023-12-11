@@ -1,0 +1,35 @@
+.astra_table {
+    border-radius: 30px;
+    border-collapse: collapse;
+    color: white;
+    background-color: #242424;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 1);
+}
+
+/* Table Padding */
+.astra_table_header_row > th {
+    padding: 15px 0;
+}
+.astra_table_header_row > th:first-child {
+    padding: 0;
+}
+.astra_table_cell {
+    padding: 12px 30px;
+}
+
+/* Lighter background color for every other row in the body */
+.astra_table_body > tr:nth-child(odd) > td {
+    background-color: #303030;
+}
+
+/* Rounded corners for every other row in the table.
+*  This had to be applied to the cells directly, instead of the row overall.*/
+.astra_table_body > tr:nth-child(odd) > td:first-child {
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+.astra_table_body > tr:nth-child(odd) > td:last-child {
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
