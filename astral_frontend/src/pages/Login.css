@@ -1,0 +1,10 @@
+body {
+    background-color: #343a40;
+}
+#loginForm{
+    background-color: #212529;
+    border-radius: 30px;
+}
+.inlineInput {
+    width: 75%;
+}
