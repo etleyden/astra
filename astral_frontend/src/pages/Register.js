@@ -63,21 +63,20 @@ function Register() {
         <div className="d-flex align-items-center justify-content-center vh-100">
             <form onSubmit={handleSubmit} className="mx-auto p-5 shadow" id="loginForm">
                 <h1>Register</h1>
-                <div className="d-flex mt-3 justify-content-between">
-                    <div className="me-3 form-group">
+                <div className="d-flex mt-3 justify-content-between form-group">
                         <input type="text" className="inlineInput form-control" name="first_name" value={formData.first_name} onChange={handleChange} placeholder="First Name" />
-                    </div>
-                    <div className='ms-3 form-group'>
                         <input type="text" className="inlineInput form-control" name="last_name" value={formData.last_name} onChange={handleChange} placeholder="Last Name" />
-                    </div>
                 </div>
-                    <div className="form-group">
-                        <input type="text" className="form-control mt-3" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
-                    </div>
-                    <div className="form-group">
-                        <input type="text" className="form-control mt-3" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
-                    </div>
-                <button type="submit" className="btn btn-primary mt-3">Register</button>
+                <div className="form-group">
+                    <input type="text" className="form-control mt-3" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
+                </div>
+                <div className="form-group">
+                    <input type="text" className="form-control mt-3" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
+                </div>
+                <div className="d-flex justify-content-between mt-3">
+                    <button type="submit" className="btn btn-primary">Register</button>
+                    <a href="/login" className="regLink">I already have an account.</a>
+                </div>
             </form >
         </div >
     );

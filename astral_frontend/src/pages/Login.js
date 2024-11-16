@@ -67,7 +67,10 @@ function Login() {
                 <div className="form-group">
                     <input type="text" className="form-control mt-3" id="passwordLogin" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
                 </div>
-                <button type="submit" className="btn btn-primary mt-3">Submit</button>
+                <div className="d-flex justify-content-between mt-3">
+                    <button type="submit" className="btn btn-primary">Submit</button>
+                    <a href="/register" className="regLink">Register</a>
+                </div>
             </form>
         </div>
     );

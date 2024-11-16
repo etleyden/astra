@@ -1,13 +1,27 @@
+const fs = require('fs');
 const express = require('express');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
+const https = require('https');
 require('dotenv').config();
 const { Pool } = require('pg'); // Use Pool for managing multiple connections
 
 const app = express();
+const privateKey = fs.readFileSync('localhost-key.pem');
+const certificate = fs.readFileSync('localhost.pem');
+const credentials = { key: privateKey, cert: certificate };
 app.use(cors()); 
 app.use(cookieParser());
 app.use(express.json());
+
+// Configure CORS for localhost (development)
+app.use(
+    cors({
+        origin: 'http://localhost:3000',
+        methods: ['GET', 'POST', 'PUT', 'DELETE'],
+        credentials: true,
+    })
+);
 
 // login/authentication logic 
 const bcrypt = require('bcryptjs');
@@ -47,10 +61,9 @@ app.get('/', (req, res) => {
  // Registration endpoint
 app.post('/api/register', async (req, res) => {
     const { first_name, last_name, email, password } = req.body;
-    const hashedPassword = await auth.hashPassword(password);
 
     try {
-        const result = await pool.query('INSERT INTO app_user (first_name, last_name, email, password) VALUES ($1, $2, $3, $4)', [first_name, last_name, email, hashedPassword]);
+        const result = await pool.query('INSERT INTO app_user (first_name, last_name, email, password) VALUES ($1, $2, $3, $4)', [first_name, last_name, email, password]);
         res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
         res.status(500).json({ error: error.message });
@@ -59,24 +72,27 @@ app.post('/api/register', async (req, res) => {
 
 // Login endpoint
 app.post('/api/login', async (req, res) => {
-    const { first_name, last_name, email, password } = req.body;
+    const { email, password } = req.body;
 
-    console.log(`Received request: ${first_name} ${last_name} ${email} ${password}`);
+    console.log(`Received request: ${email} ${password}`);
     try {
         const result = await pool.query('SELECT * FROM app_user WHERE email = $1', [email]);
         const user = result.rows[0];
 
         if (!user) {
+            console.log("Invalid User")
             return res.status(401).json({ error: 'Invalid email or password' });
         }
 
+        console.log(`Comparing ${user.password} to ${password}`)
         const isPasswordValid = await bcrypt.compare(password, user.password);
 
         if (!isPasswordValid) {
+            console.log("Password Invalid");
             return res.status(401).json({ error: 'Invalid email or password' });
         }
 
-        const token = auth.generateToken(user.id);
+        const token = generateToken(user.id);
         res.cookie('token', token, { httpOnly: true });
         res.json({ message: 'Login successful' });
     } catch (error) {
@@ -84,6 +100,6 @@ app.post('/api/login', async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`Server listening on port ${port}`);
+https.createServer(credentials, app).listen(port, () => {
+    console.log(`HTTPS Server listening on port ${port}`);
 });
