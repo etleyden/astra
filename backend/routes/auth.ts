@@ -14,14 +14,26 @@ router.post("/login", async (req, res) => {
     try {
         const {email, password} = req.body;
         const result = await pool.query(
-            `SELECT id, password FROM app_user
+            `SELECT id, first_name, last_name, password FROM app_user
             WHERE email = $1`, [email]);
-        if (result.rows.length == 0) res.status(401).json({ error: "Invalid credentials."});
+        if (result.rows.length == 0) {
+            res.status(401).json({ error: "Invalid credentials."});
+            return;
+        }
 
+        console.log(result.rows);
         const valid = await bcrypt.compare(password, result.rows[0].password);
-        if(!valid) res.status(401).json({ error: "Invalid credentials" });
+        if(!valid) {
+            res.status(401).json({ error: "Invalid credentials" });
+            return;
+        }
 
-        const token = jwt.sign({ userId: result.rows[0].id }, jwtSecret, { expiresIn: "1d" });
+        const token = jwt.sign({ 
+            userId: result.rows[0].id,
+            first_name: result.rows[0].first_name,
+            last_name: result.rows[0].last_name,
+            email: email
+        }, jwtSecret, { expiresIn: "1d" });
         res.json({token});
     } catch (error) {
         console.error(error);

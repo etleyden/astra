@@ -2,3 +2,7 @@
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark, abyss;
 }
+.validator-hint {
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
