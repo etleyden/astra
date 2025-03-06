@@ -27,7 +27,7 @@ CREATE TABLE
 CREATE TABLE
 CREATE TABLE 
 ```
-3. Now, in `astral_backend`, create a `.env` with the following variables: 
+3. Now, in `backend`, create a `.env` with the following variables: 
 ```
 ASTRAL_DB_USER=[username]
 ASTRAL_DB_HOST=localhost
@@ -37,9 +37,9 @@ ASTRAL_DB_NAME=[dbname]
 
 **Development Environment Setup**
 
-Repeat the following steps for `astral_frontend` and `astral_backend`:
+Repeat the following steps for `frontend` and `backend`:
 
 ```
 npm install
-npm run start
+npm run dev
 ```
