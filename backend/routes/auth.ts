@@ -21,7 +21,6 @@ router.post("/login", async (req, res) => {
             return;
         }
 
-        console.log(result.rows);
         const valid = await bcrypt.compare(password, result.rows[0].password);
         if(!valid) {
             res.status(401).json({ error: "Invalid credentials" });
@@ -42,7 +41,6 @@ router.post("/login", async (req, res) => {
 });
 
 router.post("/register", async (req, res) => {
-    console.log(req.body);
     const { first_name, last_name, email, password } = req.body;
     const hashedPassword = await bcrypt.hash(password, 10);
 
