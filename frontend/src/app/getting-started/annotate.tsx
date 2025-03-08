@@ -87,7 +87,6 @@ export default function AnnotateFile({annotationHandler, onError, file}: Annotat
     // select an account
     //date vendor type amount notes
     let keyCounter = 0;
-    //test
     return (
         <div className="absolute inset-0 h-screen w-screen">
             <div className="flex mx-5 my-3">
