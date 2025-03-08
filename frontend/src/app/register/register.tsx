@@ -1,5 +1,5 @@
 "use client";
-import {useRef, useState} from "react";
+import {useRef, useState, useEffect} from "react";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "../../context/AuthContext";
@@ -94,6 +94,15 @@ export default function Register() {
             formRef.current?.reportValidity();
         }
     }
+
+
+    // TODO: fade in/fade out animation
+    useEffect(() => {
+        if(error) {
+            const timer = setTimeout(() => {setError("")}, 3000);
+            return () => clearTimeout(timer);
+        }
+    }, [error]);
 
     //TODO: Test if mismatching but otherwise valid passwords is working? 
     return (

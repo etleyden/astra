@@ -11,6 +11,7 @@ interface User {
 
 interface AuthContextType {
     user: User | null;
+    loading: boolean;
     login: (token: string) => void;
     logout: () => void;
 }
@@ -19,18 +20,23 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [user, setUser] = useState<User | null>(null);
+    const [loading, setLoading] = useState(true);
     const router = useRouter();
 
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
+            console.log(token);
             try {
                 const decodedUser = JSON.parse(atob(token.split(".")[1])); // Decode JWT
                 setUser(decodedUser);
+                console.log("Found user");
             } catch {
                 localStorage.removeItem("token");
+                console.log("not Found user");
             }
         }
+        setLoading(false);
     }, []);
 
     const login = (token: string) => {
@@ -47,7 +53,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     };
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, loading, login, logout }}>
             {children}
         </AuthContext.Provider>
     );

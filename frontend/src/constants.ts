@@ -1,0 +1,1 @@
+export const CSV_COLUMN_LABELS = ["Vendor", "Amount", "Category", "Date", "Description"] // TODO: Handle "pending" transactions.. this could be tricky
