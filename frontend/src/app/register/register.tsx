@@ -1,3 +1,18 @@
+/**
+ * @description The registration page for new users to create an account.
+ * 
+ * This page provides a registration form where users can enter their first name, last name,
+ * email, and password. It includes client-side validation and automatically logs the user in
+ * upon successful registration.
+ * 
+ * Features:
+ * - Input validation for name, email, and password fields.
+ * - Password visibility toggle.
+ * - Automatic login upon successful registration.
+ * - Displays error messages when registration fails.
+ * 
+ * @returns {JSX.Element} The Register page component.
+ */
 "use client";
 import {useRef, useState, useEffect} from "react";
 import {useRouter} from "next/navigation";
@@ -13,9 +28,11 @@ interface UserRegistration {
     verify_password: string
 }
 
+
+
 export default function Register() {
     const router = useRouter();
-    const {login} = useAuth();
+    const { login } = useAuth();
     const formRef = useRef<HTMLFormElement>(null);
     const [formData, setFormData] = useState<UserRegistration>({
         first_name: "",
@@ -36,10 +53,10 @@ export default function Register() {
     }
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-        e.preventDefault(); 
+        e.preventDefault();
 
-        if(formRef.current?.checkValidity()) {
-            if(formData.password !== formData.verify_password) {
+        if (formRef.current?.checkValidity()) {
+            if (formData.password !== formData.verify_password) {
                 alert("Passwords do not match");
                 return;
             }
@@ -47,14 +64,14 @@ export default function Register() {
             console.log(formData);
 
             try {
-                const regResponse = await fetch ("http://localhost:3001/api/auth/register", {
+                const regResponse = await fetch("http://localhost:3001/api/auth/register", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(formData),
                     credentials: "include"
                 });
 
-                if(!regResponse.ok) {
+                if (!regResponse.ok) {
                     var contentType = regResponse.headers.get('content-type')
                     if (contentType && contentType.indexOf('application/json') !== -1) {
                         const data = await regResponse.json();
@@ -78,7 +95,7 @@ export default function Register() {
                     credentials: "include"
                 });
 
-                if(!loginResponse.ok) {
+                if (!loginResponse.ok) {
                     throw new Error("Login failed");
                 }
 
@@ -98,8 +115,8 @@ export default function Register() {
 
     // TODO: fade in/fade out animation
     useEffect(() => {
-        if(error) {
-            const timer = setTimeout(() => {setError("")}, 3000);
+        if (error) {
+            const timer = setTimeout(() => { setError("") }, 3000);
             return () => clearTimeout(timer);
         }
     }, [error]);

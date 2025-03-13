@@ -15,8 +15,10 @@ export default function ProtectedRoute({ children }: ProtectedRouteProps) {
     useEffect(() => {
         setIsClient(true);
     }, []);
+
     useEffect(() => {
         if (isClient && !loading && !user) {
+            // also check if the user token is expired
             console.log("user not found. redirecting. ");
             router.push("/");
         }

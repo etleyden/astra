@@ -12,6 +12,7 @@ interface User {
 interface AuthContextType {
     user: User | null;
     loading: boolean;
+    getToken: () => string | null;
     login: (token: string) => void;
     logout: () => void;
 }
@@ -26,14 +27,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         const token = localStorage.getItem("token");
         if (token) {
-            console.log(token);
+            console.info(token);
             try {
                 const decodedUser = JSON.parse(atob(token.split(".")[1])); // Decode JWT
+                const currentTime = Math.floor(Date.now() / 1000);
+                if(decodedUser.exp < currentTime) {
+                    console.error("Token expired");
+                    throw new Error("Token Expired");
+                }
                 setUser(decodedUser);
-                console.log("Found user");
+                console.info("Found user");
             } catch {
                 localStorage.removeItem("token");
-                console.log("not Found user");
+                console.info("No User Found");
             }
         }
         setLoading(false);
@@ -52,8 +58,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         router.push("/");
     };
 
+    const getToken = () => {
+        return localStorage.getItem("token");
+    }
+
     return (
-        <AuthContext.Provider value={{ user, loading, login, logout }}>
+        <AuthContext.Provider value={{ user, loading, getToken, login, logout }}>
             {children}
         </AuthContext.Provider>
     );

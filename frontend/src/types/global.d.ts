@@ -1,5 +1,6 @@
+// TODO: Share types between the frontend and backend
 declare global {
-    export interface Annotation { // column names in a CSV representing critical components of a transaction
+    export class Annotation { // column names in a CSV representing critical components of a transaction
         acct_id: string;
         txn_description: string;
         txn_vendor: string;
@@ -7,9 +8,17 @@ declare global {
         txn_amount: string;
         txn_category: string;
     }
+    // Coupled CSV files and their annotations from the user
     export interface AnnotatedFiles {
         file: File;
         annotations: Annotation;
+    }
+    // Accounts that are being tracked by Astral
+    export interface TrackedAccount {
+        id: number,
+        name: string,
+        description: string,
+        type: string | number
     }
 }
 

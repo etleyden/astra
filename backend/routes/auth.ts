@@ -1,12 +1,20 @@
+/**
+ * Backend authentication
+ */
 import express, {Request, Response, NextFunction} from "express";
 import pool from "../db";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 import dotenv from "dotenv";
+import cors from "cors";
 
 const router = express.Router();
 router.use(express.json());
 dotenv.config();
+router.use(cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+}));
 const jwtSecret = process.env.JWT_PRIVATE_KEY as string;
 if(!jwtSecret) console.error("Environment variable for JWT secret is missing");
 
@@ -72,21 +80,35 @@ router.post("/register", async (req, res) => {
 });
 
 // provide authentication middleware as well
-interface AuthRequest extends Request {
+export interface AuthRequest extends Request {
     user?: {userId: string};
 }
-const authenticate = (req: AuthRequest, res: Response, next: NextFunction) => {
-    const token = req.header("Authorization") as string;
-    if(!token) res.status(401).json({ error: "Access denied" });
+export const authenticate = (req: AuthRequest, res: Response, next: NextFunction): void => {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1]; // 'Bearer <token>'
 
-    try {
-        const verified = jwt.verify(token, jwtSecret) as {userId: string};
-        req.user = verified;
-        next();
-    } catch(error) {
-        res.status(400).json({ error: "Invalid token"});
+    if (!token) {
+        res.status(401).json({ message: 'No token provided' });
+        return;
     }
-}
+
+    jwt.verify(token, jwtSecret, (err, user) => {
+        if (err) {
+            console.error(err);
+            res.status(403).json({ message: 'Invalid token' });
+            return;
+        }
+        if(!user) {
+            res.status(500).json({message: 'Server error'});
+        }
+        // Attach user information to the request object
+        req.user = {
+            userId: (user as JwtPayload).userId
+        }
+        //req.user = user;
+        next(); // Call the next middleware or route handler
+    });
+};
 
 
 // example of a protected route

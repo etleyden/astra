@@ -1,3 +1,22 @@
+/**
+ * @page Login
+ * 
+ * This is the login page for the application, allowing users to authenticate using their email and password.
+ * It includes:
+ * - Form fields for email and password with validation
+ * - Password visibility toggle
+ * - Error handling to display authentication errors
+ * - Redirect to the home page on successful login
+ * 
+ * The form sends a POST request to the API to authenticate the user, and on success, a JWT token is stored.
+ * 
+ * @component LoginForm
+ * 
+ * @remarks
+ * - The form uses local state to track form data and error messages.
+ * - A 3-second timeout clears error messages once they are displayed.
+ * - The password input field toggles between plain text and password for better user experience.
+ */
 "use client";
 import {useEffect, useRef, useState} from "react";
 import Link from "next/link";
@@ -69,7 +88,7 @@ export default function Login() {
         }
     }, [error]);
 
-    //TODO: handle invalid logins
+    //TODO: handle invalid logins (what does this mean??)
     return (
         <>
             <div className="w-full grid place-items-center py-3">

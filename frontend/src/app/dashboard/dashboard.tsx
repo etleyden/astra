@@ -1,5 +1,5 @@
 "use client";
-import ProtectedRoute from "@/component/ProtectedRoute";
+import ProtectedRoute from "@/components/ProtectedRoute";
 import Link from "next/link";
 import {useAuth} from "@/context/AuthContext";
 
