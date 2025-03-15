@@ -29,7 +29,7 @@ export default function CreateAccount({accountCreationHandler}: CreateAccountPro
                 setAccountTypes(data);
                 setTrackedAccount({
                     ...trackedAccount,
-                    type: data[0]
+                    type: data[0].id
                 });
             })
             .catch(error => {
@@ -38,10 +38,18 @@ export default function CreateAccount({accountCreationHandler}: CreateAccountPro
     }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement> | React.ChangeEvent<HTMLSelectElement>) => {
+        let value: number | string = e.target.value;
+        if(e.target.name == "type") {
+            for(let i in accountTypes) {
+                if (accountTypes[i].name == value) {
+                    value = accountTypes[i].id;
+                }
+            }
+        }
         setTrackedAccount({
             ...trackedAccount,
-            [e.target.name]: e.target.value
-        })
+            [e.target.name]: value
+        });
     }
 
     const handleAccountCreation = () => {
@@ -52,29 +60,8 @@ export default function CreateAccount({accountCreationHandler}: CreateAccountPro
             console.info("Account nickname and description must contain text");
             return;
         }
-        // swap out the account type name for the id
-        for (const i in accountTypes) {
-            if (accountTypes[i].name == trackedAccount.type) {
-                setTrackedAccount({
-                    ...trackedAccount,
-                    type: accountTypes[i].id
-                });
-                break;
-            }
-        }
-        // the format for trackedAccount here is wrong for some reason.
-        /* EXAMPLE
-        {
-  "id": -1,
-  "name": "barack obama",
-  "description": "he's really rich",
-  "type": {
-    "id": "1",
-    "name": "Checking"
-  }
-}
-         */
-        console.log(trackedAccount);
+        
+        // submit the new account data
         fetch("http://localhost:3001/api/user/add_account", {
             method: "POST",
             headers: {

@@ -9,9 +9,12 @@ declare global {
         txn_category: string;
     }
     // Coupled CSV files and their annotations from the user
-    export interface AnnotatedFiles {
+    export interface AnnotatedFile {
+        id: number,
+        name: string,
+        data: { [key: string]: string }[],
         file: File;
-        annotations: Annotation;
+        annotation: Annotation;
     }
     // Accounts that are being tracked by Astral
     export interface TrackedAccount {

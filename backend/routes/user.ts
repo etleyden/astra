@@ -16,6 +16,11 @@ router.use(cors({
 }));
 
 router.post("/add_account", authenticate, async (req: AuthRequest, res) => {
+    console.log(`
+        ==========
+        ADDING A NEW ACCOUNT TO BE TRACKED
+        ==========
+        `);
     const {name, description, type} = req.body;
     
     try {
@@ -24,7 +29,7 @@ router.post("/add_account", authenticate, async (req: AuthRequest, res) => {
             `INSERT INTO acct (name, acct_type_id, description, app_user_id)
             VALUES ($1, $2, $3, $4)
             RETURNING id`, 
-            [name, type, description, req.user?.userId]);
+            [name, Number(type), description, req.user?.userId]);
 
         res.status(201).json({acct_id: result.rows[0].id});
 
@@ -32,9 +37,11 @@ router.post("/add_account", authenticate, async (req: AuthRequest, res) => {
         console.error(err);
         res.status(500).json({error: "Database error"});
     }
-    console.log(req.body);
-    console.log(req.user?.userId);
-    console.log("It works!");
+    console.log(`
+        =========
+        END ADDING USER ACCOUNT TO TRACK
+        =========
+        `);
 });
 
 // retrieve the nicknames of a logged in user's accounts

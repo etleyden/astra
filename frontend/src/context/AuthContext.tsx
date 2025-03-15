@@ -33,7 +33,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
                 const currentTime = Math.floor(Date.now() / 1000);
                 if(decodedUser.exp < currentTime) {
                     console.error("Token expired");
-                    throw new Error("Token Expired");
+                    //throw new Error("Token Expired");
                 }
                 setUser(decodedUser);
                 console.info("Found user");

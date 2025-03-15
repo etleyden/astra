@@ -17,7 +17,8 @@
 import {useRef, useState, useEffect} from "react";
 import {useRouter} from "next/navigation";
 import Link from "next/link";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
+import { useUserMessages } from "@/context/UserMessageContext";
 import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
 
 interface UserRegistration {
@@ -31,8 +32,8 @@ interface UserRegistration {
 
 
 export default function Register() {
-    const router = useRouter();
     const { login } = useAuth();
+    const { error } = useUserMessages();
     const formRef = useRef<HTMLFormElement>(null);
     const [formData, setFormData] = useState<UserRegistration>({
         first_name: "",
@@ -43,7 +44,6 @@ export default function Register() {
     });
     const [showPassword, setShowPassword] = useState(false);
     const [showVerifyPassword, setShowVerifyPassword] = useState(false);
-    const [error, setError] = useState("");
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormData({
@@ -75,7 +75,7 @@ export default function Register() {
                     var contentType = regResponse.headers.get('content-type')
                     if (contentType && contentType.indexOf('application/json') !== -1) {
                         const data = await regResponse.json();
-                        setError(data.error);
+                        error(data.error);
                         return;
                         //throw Error(`Error making request: ${regResponse.status.toString()}: ${data.error}`)
                     } else {
@@ -113,13 +113,6 @@ export default function Register() {
     }
 
 
-    // TODO: fade in/fade out animation
-    useEffect(() => {
-        if (error) {
-            const timer = setTimeout(() => { setError("") }, 3000);
-            return () => clearTimeout(timer);
-        }
-    }, [error]);
 
     //TODO: Test if mismatching but otherwise valid passwords is working? 
     return (
@@ -215,14 +208,6 @@ export default function Register() {
                     </div>
                 </div>
             </div>
-            {error && (
-                <div role="alert" className="absolute m-5 bottom-0 w-fit alert alert-error">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>Error! {error}</span>
-                </div>
-            )}
         </>
     )
 }

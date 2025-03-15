@@ -20,7 +20,8 @@
 "use client";
 import {useEffect, useRef, useState} from "react";
 import Link from "next/link";
-import { useAuth } from "../../context/AuthContext";
+import { useAuth } from "@/context/AuthContext";
+import { useUserMessages } from "@/context/UserMessageContext";
 import { RiEyeCloseLine, RiEyeLine } from "react-icons/ri";
 
 interface UserLogin{
@@ -30,12 +31,12 @@ interface UserLogin{
 
 export default function Login() {
     const {login} = useAuth();
+    const {error, info, success} = useUserMessages();
     const formRef = useRef<HTMLFormElement>(null);
     const [formData, setFormData] = useState<UserLogin>({
         email: "",
         password: "",
     });
-    const [error, setError] = useState("");
     const [showPassword, setShowPassword] = useState(false);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -63,7 +64,7 @@ export default function Login() {
                 var contentType = loginResponse.headers.get('content-type')
                 if (contentType && contentType.indexOf('application/json') !== -1) {
                     const data = await loginResponse.json();
-                    setError(data.error);
+                    error(data.error);
                     return;
                     //throw Error(`Error making request: ${loginResponse.status.toString()}: ${data.error}`)
                 } else {
@@ -79,14 +80,6 @@ export default function Login() {
             // do something to indicate failure
         }
     }
-
-    // TODO: fade in/fade out animation
-    useEffect(() => {
-        if(error) {
-            const timer = setTimeout(() => {setError("")}, 3000);
-            return () => clearTimeout(timer);
-        }
-    }, [error]);
 
     //TODO: handle invalid logins (what does this mean??)
     return (
@@ -135,14 +128,6 @@ export default function Login() {
                     </div>
                 </div>
             </div>
-            {error && (
-                <div role="alert" className="absolute m-5 bottom-0 w-fit alert alert-error">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 shrink-0 stroke-current" fill="none" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span>Error! {error}</span>
-                </div>
-            )}
         </>
     )
 }
