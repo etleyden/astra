@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Requirements Specification.md",
+                "file": "01 Design/01 Architecture.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Requirements Specification"
+              "title": "01 Architecture"
             }
           }
         ]
@@ -168,9 +168,14 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "65c75de47c77c5b3",
+  "active": "00895b9a1b24ed47",
   "lastOpenFiles": [
-    "Untitled",
-    "Requirements Specification.md"
+    "Diagrams/Data Flow Model.svg",
+    "01 Design/01 Architecture.md",
+    "Diagrams",
+    "Untitled.canvas",
+    "Untitled.md",
+    "01 Design/00 Requirements Specification.md",
+    "01 Design"
   ]
 }
