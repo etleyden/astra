@@ -1,6 +1,6 @@
 ## Overview
 **Primary objective:** To create a powerful finance app that minimizes user effort, and optimizes the delivery of financial summaries so the user can make smarter, well-informed choices. 
-**Target Users:** Young teens/adults in high school/college learning how to manage money for the first time. Or adults who really need to manage every penny with exacting detail. 
+**Target Users:** Young teens/adults in high school/college learning how to manage money for the first time. Odafasdf a adults who really need to manage every penny with exacting detail. 
 ## Core Use Cases
 * As a user, I want to import data from my bank, credit card company, or other lenders so that I can use it in the analysis of my financial situation
 * As a user, I want to set informed goals for myself so that I can have better financial health.
@@ -10,6 +10,8 @@
 1. Users can register/login with their email/password, Google Account, or Apple Account
 2. Users can reset their password via email
 3. The system will use MFA to protect user privacy
+	1. Email Passcode
+	2. Authenticator App
 4. \[knowledge gap\]
 ### Data Management
 1. Users can import data from their bank, ideally via Plaid, but MVP at least by CSV
