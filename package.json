@@ -10,6 +10,7 @@
   "author": "Ethan Leyden",
   "type": "commonjs",
   "scripts": {
+    "dev": "bash bin/dev.sh"
   },
   "private": true,
   "workspaces": ["packages/*"]
