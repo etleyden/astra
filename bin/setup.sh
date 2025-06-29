@@ -1,4 +1,4 @@
-cd src/ui
+cd packages/ui
 npm install
 cd certs
 mkcert localhost

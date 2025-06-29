@@ -1,0 +1,16 @@
+{
+  "name": "astra",
+  "version": "1.0.0",
+  "description": "Personal Finance App",
+  "repository": {
+    "type": "git",
+    "url": "etleyden@gitpi:/home/etleyden/astra"
+  },
+  "license": "ISC",
+  "author": "Ethan Leyden",
+  "type": "commonjs",
+  "scripts": {
+  },
+  "private": true,
+  "workspaces": ["packages/*"]
+}
