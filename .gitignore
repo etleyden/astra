@@ -5,7 +5,6 @@ certs/
 *.pem
 *.key
 
-
 ### ==== FROM A NODE GITIGNORE TEMPLATE ====
 # Logs
 logs

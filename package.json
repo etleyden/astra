@@ -10,6 +10,7 @@
   "author": "Ethan Leyden",
   "type": "commonjs",
   "scripts": {
+    "setup": "bash bin/setup.sh",
     "dev": "bash bin/dev.sh"
   },
   "private": true,

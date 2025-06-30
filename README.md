@@ -13,7 +13,7 @@ Run our setup script:
 bash bin/setup.sh
 ```
 
-## I want too...
+## I want to...
 
 Work in a development environment: `npm run dev` in the root directory.
 
