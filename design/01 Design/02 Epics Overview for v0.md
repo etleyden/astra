@@ -7,6 +7,7 @@
 * Design
 * Users should be able to categorize their transactions manually, quickly
 * Users should be able to make their own well-defined categories without too much manual effort.
+* Users should be able to gather actionable information about the transaction, such as vendor's contact info, address, etc. 
 * Test
 ## Uploading and processing of external data
 * Design

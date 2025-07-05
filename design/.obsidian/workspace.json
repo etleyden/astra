@@ -4,19 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "df5c745ba0ea6acf",
+        "id": "25a2cd7b77445cc0",
         "type": "tabs",
         "children": [
           {
-            "id": "04d81d14b85eed05",
+            "id": "cb33bfdcb89f9c5b",
             "type": "leaf",
             "state": {
-              "type": "diagram-edit",
+              "type": "markdown",
               "state": {
-                "file": "Diagrams/DB Schema.svg"
+                "file": "01 Design/01 Architecture.md",
+                "mode": "source",
+                "source": false
               },
               "icon": "lucide-file",
-              "title": "DB Schema.svg"
+              "title": "01 Architecture"
             }
           }
         ]
@@ -166,14 +168,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "04d81d14b85eed05",
+  "active": "cb33bfdcb89f9c5b",
   "lastOpenFiles": [
-    "Diagrams/Data Flow Model.svg",
-    "Diagrams/DB Schema.svg",
-    "01 Design/03 Designing Goals Entity.md",
-    "01 Design/99 TODO Bucket.md",
-    "01 Design/02 Epics Overview for v0.md",
     "01 Design/01 Architecture.md",
+    "Pasted image 20250705105136.png",
+    "01 Design/02 Epics Overview for v0.md",
+    "Diagrams/DB Schema.svg",
+    "01 Design/99 TODO Bucket.md",
+    "01 Design/03 Designing Goals Entity.md",
+    "Diagrams/Data Flow Model.svg",
     "01 Design/00 Requirements Specification.md",
     "Diagrams",
     "Untitled.canvas",
