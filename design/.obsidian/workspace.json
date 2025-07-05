@@ -11,10 +11,12 @@
             "id": "04d81d14b85eed05",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "diagram-edit",
+              "state": {
+                "file": "Diagrams/DB Schema.svg"
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "DB Schema.svg"
             }
           }
         ]

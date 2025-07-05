@@ -12,25 +12,45 @@ services:
       - pgdata:/var/lib/postgresql/data
     networks:
       - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
   frontend:
     build:
       context: ../
       dockerfile: ./containers/Dockerfile.ui
+    depends_on:
+      db:
+        condition: service_healthy
     container_name: vite-frontend
     ports:
       - "5173:5173"
     volumes:
       - ../packages/ui:/app
-      - /app/node_modules  # ensures host node_modules doesn't overwrite container's
+      - /app/node_modules # ensures host node_modules doesn't overwrite container's
     networks:
       - app-network
     environment:
       - NODE_ENV=development
-
-
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "5050:80" # Map pgAdmin web interface to host port 5050
+    depends_on:
+      - db # Ensure PostgreSQL starts before pgAdmin
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin # Persist pgAdmin configuration
+    networks:
+      - app-network
 
 volumes:
   pgdata:
+  pgadmin_data:
 
 networks:
   app-network:
