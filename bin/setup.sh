@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Create development secrets. Run once (you may need to run again
+# if secrets get deleted, such as by git clean)
 CURRENT_DIR="$(pwd)"
 echo "Root Directory: $CURRENT_DIR"
 
@@ -13,7 +15,7 @@ mkcert localhost
 cd $CURRENT_DIR
 
 # set up the Postgres DB using docker and creating the correct .env file
-SERVICES_ENV_PATH=$CURRENT_DIR/packages/services/.env
+SERVICES_ENV_PATH=$CURRENT_DIR/packages/api/.env
 DB_ENV_PATH=$CURRENT_DIR/packages/db/.env
 DB_ENV_TEXT=$(cat <<EOF
 # App environment variables
@@ -29,9 +31,9 @@ EOF
 
 if [ ! -f $SERVICES_ENV_PATH ]; then
     echo "$DB_ENV_TEXT" > $SERVICES_ENV_PATH
-    echo "services/.env created"
+    echo "api/.env created"
 else
-    echo "services/.env already exists. Skipping..."
+    echo "api/.env already exists. Skipping..."
 fi
 if [ ! -f $DB_ENV_PATH ]; then
     echo "$DB_ENV_TEXT" > $DB_ENV_PATH
@@ -40,3 +42,8 @@ else
     echo "db/.env already exists. Skipping..."
 fi
 echo "Setup is done!"
+
+# Set up the API service
+mkdir $CURRENT_DIR/packages/api/certs
+cd $CURRENT_DIR/packages/api/certs
+mkcert localhost

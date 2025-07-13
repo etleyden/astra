@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Build all the components of the app into a live development environment
 CURRENT_DIR="$(pwd)"
 echo "Root Directory: $CURRENT_DIR"
 

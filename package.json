@@ -11,13 +11,18 @@
   "type": "commonjs",
   "scripts": {
     "setup": "bash bin/setup.sh",
-    "dev": "bash bin/dev.sh"
+    "dev": "bash bin/dev.sh",
+    "reset-db": "bash bin/reset-db.sh",
+    "clean": "bash bin/clean.sh"
   },
   "private": true,
   "workspaces": [
     "packages/*"
   ],
   "dependencies": {
+    "@babel/core": "^7.28.0",
+    "@babel/node": "^7.28.0",
+    "@babel/preset-env": "^7.28.0",
     "reflect-metadata": "^0.2.2"
   },
   "devDependencies": {
