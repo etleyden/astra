@@ -6,7 +6,7 @@
       {
         "id": "25a2cd7b77445cc0",
         "type": "tabs",
-        "dimension": 52.85532994923858,
+        "dimension": 52.85532994923859,
         "children": [
           {
             "id": "cb33bfdcb89f9c5b",
@@ -27,7 +27,7 @@
       {
         "id": "605e148799e53d78",
         "type": "tabs",
-        "dimension": 47.14467005076142,
+        "dimension": 47.14467005076141,
         "children": [
           {
             "id": "c205400008e2ca31",
@@ -208,8 +208,8 @@
   "active": "b772c30382652e16",
   "lastOpenFiles": [
     "01 Design/99 TODO Bucket.md",
-    "01 Design/01 Architecture.md",
     "01 Design/98 Work In Progress.md",
+    "01 Design/01 Architecture.md",
     "01 Design/03 Designing Goals Entity.md",
     "01 Design/02 Epics Overview for v0.md",
     "Diagrams/DB Schema.svg",

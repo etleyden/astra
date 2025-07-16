@@ -1,3 +1,4 @@
+**Ethan**
 * CRUD operations for each entity
 	* Account
 	* Goal
@@ -5,6 +6,9 @@
 	* Vendor
 	* Transaction
 	* Category
+* Restart/Reset only the database in the npm script
+	* Create a new bash script that a) wipes the database and b) re-runs the TypeORM config
+**Jermane**
 * Enforcing constraints on database fields
 	* Constraints
 		* Account bank must be a vendor with is_bank = true
@@ -17,5 +21,3 @@
 		* In the TypeORM spec
 		* DB triggers
 		* In the CRUD operations (this might be later)
-* Restart/Reset only the database in the npm script
-	* Create a new bash script that a) wipes the database and b) re-runs the TypeORM config
