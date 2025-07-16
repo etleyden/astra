@@ -16,7 +16,7 @@ There is a hand-drawn diagram in the diagrams folder, and some notes on the Goal
 ### API Layer
 The package for the API Endpoints will look something like the following: 
 ```
-/api
+/api/src
 |-app.ts
 |-/routes
   |-index.ts

@@ -1,14 +1,18 @@
 {
   "compilerOptions": {
-    "target": "ES2020",
-    "module": "commonjs",
+    "target": "ESNext",
+    "module": "NodeNext",
     "outDir": "./dist",
     "rootDir": "./src",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
     "strict": true,
-    "esModuleInterop": true
+    "composite": true,
+    "esModuleInterop": true,
+    "paths": {
+      "controllers": ["../controllers/*"]
+    }
   },
+  "references": [{ "path": "../controllers" }],
   "include": ["src"]
 }
-

@@ -2,7 +2,7 @@
 import { Get, JsonController } from "routing-controllers";
 
 @JsonController("/hello")
-export class HelloController {
+export class HelloApi {
   @Get("/")
   sayHello() {
     return { message: "Hello World!" };

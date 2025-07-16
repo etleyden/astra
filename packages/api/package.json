@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "build": "nodemon"
   },
   "keywords": [],
   "author": "",
@@ -17,7 +18,8 @@
     "express": "^4.21.2",
     "multer": "^2.0.1",
     "reflect-metadata": "^0.2.2",
-    "routing-controllers": "^0.11.2"
+    "routing-controllers": "^0.11.2",
+    "controllers": "*"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.6",

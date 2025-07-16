@@ -15,7 +15,7 @@ mkcert localhost
 cd $CURRENT_DIR
 
 # set up the Postgres DB using docker and creating the correct .env file
-SERVICES_ENV_PATH=$CURRENT_DIR/packages/api/.env
+SERVICES_ENV_PATH=$CURRENT_DIR/packages/controllers/.env
 DB_ENV_PATH=$CURRENT_DIR/packages/db/.env
 DB_ENV_TEXT=$(cat <<EOF
 # App environment variables

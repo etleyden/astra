@@ -23,6 +23,7 @@
     "@babel/core": "^7.28.0",
     "@babel/node": "^7.28.0",
     "@babel/preset-env": "^7.28.0",
+    "@types/node": "^24.0.14",
     "reflect-metadata": "^0.2.2"
   },
   "devDependencies": {

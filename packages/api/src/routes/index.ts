@@ -1,3 +1,4 @@
-import { HelloController } from "./HelloController";
+import { HelloApi } from "./HelloApi";
+import { UserApi } from "./UserApi";
 
-export const controllers = [HelloController];
+export const controllers = [HelloApi, UserApi];

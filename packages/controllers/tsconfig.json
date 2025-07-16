@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "dist",
+    "rootDir": "./",
+    "declaration": true,
+    "module": "NodeNext", // may need to revert to ESNext if we have issues with bundlers?
+    "moduleResolution": "nodenext",
+    "target": "ESNext",
+    "esModuleInterop": true,
+    "composite": true
+  },
+  "include": ["controllers", "index.ts"]
+}
