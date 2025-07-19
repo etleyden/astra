@@ -42,3 +42,5 @@ EXECUTE FUNCTION enforce_user_id_match();
 ## Workspace Quality of Life
 * Isolate a DB refresh in the development environment
 	* I want to be able to just refresh the database without having to rebuild the entire application
+* Consistency in directory structure between packages
+	* There is an inconsistency in directory structure for each package where some contain all of their code within a single src/ subdirectory, and others keep the code at the root of the package. I prefer the second option because the monorepo structure is already so deeply nested and complex that it's cumbersome to navigate the project. The only package that needs a src folder is the ui package, because it will also contain code in the root of the package intended for use by the build results.

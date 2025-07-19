@@ -9,5 +9,5 @@
     "esModuleInterop": true,
     "composite": true
   },
-  "include": ["controllers", "index.ts"]
+  "include": ["services", "index.ts"]
 }

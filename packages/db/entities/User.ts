@@ -1,4 +1,4 @@
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, Unique } from "typeorm";
 import { Goal } from "./Goal";
 import { Account } from "./Account";
 
@@ -7,7 +7,14 @@ import { Account } from "./Account";
 })
 export class User {
   @PrimaryGeneratedColumn("uuid")
-  id: string;
+  guid!: string;
+
+  // this will serve as the user-facing identifier
+  @Column({ unique: true })
+  email!: string;
+
+  @Column()
+  passwordHash!: string;
 
   @Column()
   first_name!: string;
@@ -15,12 +22,10 @@ export class User {
   @Column()
   last_name?: string;
 
-  @Column()
-  email: string;
 
   @OneToMany(() => Goal, (goal) => goal.user)
   goals: Goal[];
 
   @OneToMany(() => Account, (account) => account.user)
-  accounts: User[];
+  accounts: Account[];
 }

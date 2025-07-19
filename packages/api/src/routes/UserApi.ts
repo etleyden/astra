@@ -1,4 +1,4 @@
-import { Post, Param, Controller } from "routing-controllers";
+import { Post, Param, Controller, Body } from "routing-controllers";
 import { UserController } from "controllers";
 
 @Controller()
@@ -7,5 +7,9 @@ export class UserApi {
   @Post("/greet/:name")
   greet(@Param("name") name: string) {
     return this.userController.greetUser(name);
+  }
+  @Post("/login")
+  login() {
+
   }
 }

@@ -1,4 +1,5 @@
 **Ethan**
+* Implement login on backend
 * CRUD operations for each entity
 	* Account
 	* Goal
@@ -21,3 +22,4 @@
 		* In the TypeORM spec
 		* DB triggers
 		* In the CRUD operations (this might be later)
+		* In the shared types
