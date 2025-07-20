@@ -25,6 +25,7 @@
     "@babel/node": "^7.28.0",
     "@babel/preset-env": "^7.28.0",
     "@types/node": "^24.0.14",
+    "dotenv": "^17.2.0",
     "reflect-metadata": "^0.2.2"
   },
   "devDependencies": {

@@ -2,7 +2,7 @@ import {Goal} from "./Goal";
 import {Account} from "./Account";
 
 export type User = {
-    id: string;
+    guid: string;
     email: string;
     first_name: string;
     last_name?: string;
@@ -19,4 +19,9 @@ export type User = {
 export type UserLogin = {
     email: string;
     password: string;
+}
+export type LoginResponse = {
+    error?: string;
+    token?: string;
+    user?: User;
 }

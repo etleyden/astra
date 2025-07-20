@@ -16,9 +16,11 @@ Run our setup script. Note that this will generate database credentials for the 
 npm run setup
 ```
 
+Note that you will need to generate a JWT_SECRET token in `controllers/.env` to manage user authentication yourself. This is intentionally left out automatically to prevent development secrets ending up in production, potentially exposing critical credentials.
+
 ## I want to...
 
-Work in a development environment: `npm run dev` in the root directory.
+Work in a development environment: `npm run dev` in the root directory. This will build everything and fire up docker containers for you. When you're done, run `npm run stop`.
 
 Compile the Electron app: `npm run build-electron && npm run electron` in `packages/ui/`.
 

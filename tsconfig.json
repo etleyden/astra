@@ -10,8 +10,9 @@
   },
   "files": [],
   "references": [
+    { "path": "packages/db"},
     { "path": "packages/shared"},
     { "path": "packages/controllers" }, 
-    { "path": "packages/api" }
+    { "path": "packages/api" },
   ]
 }

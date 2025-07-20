@@ -40,6 +40,7 @@ EXECUTE FUNCTION enforce_user_id_match();
 	* Specify date types in TypeORM definitions
 * API and UI should get ports and HTTPS certificates from environment variables, not static/hard-coded values.
 	* This is fine for development, but once we are moving towards deployment this needs to be dynamic based on the build environment
+* Start designing tests. Easiest one to start with is linting checks with ESLint
 
 ## Workspace Quality of Life
 * Isolate a DB refresh in the development environment

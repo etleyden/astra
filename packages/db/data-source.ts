@@ -22,8 +22,7 @@ export const AppDataSource = new DataSource({
   subscribers: [],
 });
 
-AppDataSource.initialize();
-const connectWithRetry = async (retries = 10, delayMs = 3000) => {
+export const connectWithRetry = async (retries = 10, delayMs = 3000) => {
   while (retries > 0) {
     try {
       await AppDataSource.initialize();
@@ -39,4 +38,3 @@ const connectWithRetry = async (retries = 10, delayMs = 3000) => {
   process.exit(1);
 };
 
-connectWithRetry();

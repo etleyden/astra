@@ -1,10 +1,11 @@
 {
-  "name": "db",
+  "name": "@astra/db",
   "version": "1.0.0",
   "description": "Database definition for astra using typeorm",
   "license": "ISC",
   "author": "Ethan Leyden",
-  "main": "entities/index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "ts-node data-source.ts",
     "build": "tsc -p ."
