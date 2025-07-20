@@ -1,4 +1,17 @@
 {
+  "compilerOption": {
+    "baseUrl": ".",
+    "paths": {
+      "@astra/db": ["packages/db"],
+      "@astra/shared": ["packages/shared"],
+      "@astra/api": ["packages/api"],
+      "@astra/controllers": ["packages/controllers"]
+    }
+  },
   "files": [],
-  "references": [{ "path": "packages/controllers" }, { "path": "packages/api" }]
+  "references": [
+    { "path": "packages/shared"},
+    { "path": "packages/controllers" }, 
+    { "path": "packages/api" }
+  ]
 }

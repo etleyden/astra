@@ -12,6 +12,7 @@
   "scripts": {
     "setup": "bash bin/setup.sh",
     "dev": "bash bin/dev.sh",
+    "stop": "bash bin/stop.sh",
     "reset-db": "bash bin/reset-db.sh",
     "clean": "bash bin/clean.sh"
   },

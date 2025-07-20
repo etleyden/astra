@@ -26,7 +26,7 @@ services:
         condition: service_healthy
     container_name: vite-frontend
     ports:
-      - "5173:5173"
+      - "3000:3000"
     volumes:
       - ../packages/ui:/app
       - /app/node_modules # ensures host node_modules doesn't overwrite container's
@@ -43,7 +43,7 @@ services:
       db:
         condition: service_healthy
     ports:
-      - "3443:3443"
+      - "3001:3001"
     volumes:
       - ../packages/api:/usr/src/app
       - /usr/src/app/node_modules

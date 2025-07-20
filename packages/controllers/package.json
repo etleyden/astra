@@ -1,5 +1,5 @@
 {
-  "name": "controllers",
+  "name": "@astra/controllers",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -12,6 +12,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/node": "^24.0.14"
+    "@types/node": "^24.0.14",
+    "@astra/shared": "*"
   }
 }

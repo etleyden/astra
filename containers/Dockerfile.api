@@ -9,6 +9,6 @@ RUN npm install
 
 COPY packages/api ./
 
-EXPOSE 3443
+EXPOSE 3001
 
 CMD ["npm", "run", "dev"]

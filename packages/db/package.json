@@ -4,10 +4,10 @@
   "description": "Database definition for astra using typeorm",
   "license": "ISC",
   "author": "Ethan Leyden",
-  "type": "ESNext",
-  "main": "index.js",
+  "main": "entities/index.ts",
   "scripts": {
-    "build": "ts-node data-source.ts"
+    "dev": "ts-node data-source.ts",
+    "build": "tsc -p ."
   },
   "dependencies": {
     "dotenv": "^16.6.1",

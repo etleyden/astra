@@ -9,10 +9,7 @@
     "strict": true,
     "composite": true,
     "esModuleInterop": true,
-    "paths": {
-      "controllers": ["../controllers/*"]
-    }
   },
-  "references": [{ "path": "../controllers" }],
+  "extends": "../../tsconfig.json",
   "include": ["src"]
 }

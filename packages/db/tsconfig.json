@@ -1,6 +1,18 @@
 {
   "compilerOptions": {
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
-  }
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "outDir": "dist",
+    "rootDir": "./",
+    "module": "NodeNext",
+    "target": "ESNext",
+    "moduleResolution": "nodenext",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["entities"]
 }

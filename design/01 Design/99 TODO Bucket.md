@@ -38,6 +38,8 @@ EXECUTE FUNCTION enforce_user_id_match();
 	* Currently this would be used in Goal.amount and Transaction.amount, and later on probably in the application logic
 * ON_DELETE and ON_UPDATE CASCADE where appropriate (right now this is not done at all)
 	* Specify date types in TypeORM definitions
+* API and UI should get ports and HTTPS certificates from environment variables, not static/hard-coded values.
+	* This is fine for development, but once we are moving towards deployment this needs to be dynamic based on the build environment
 
 ## Workspace Quality of Life
 * Isolate a DB refresh in the development environment

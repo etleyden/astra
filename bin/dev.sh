@@ -4,9 +4,10 @@
 CURRENT_DIR="$(pwd)"
 echo "Root Directory: $CURRENT_DIR"
 
+tsc -b
+npm --workspaces run build
+
 cd $CURRENT_DIR/containers
 docker rm -f astra-dev-db 2>/dev/null || true
-docker compose up --build --detach
+docker compose up -d
 
-cd $CURRENT_DIR
-npm --workspaces run build

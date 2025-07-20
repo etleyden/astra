@@ -1,9 +1,9 @@
 {
-  "name": "shared",
+  "name": "@astra/shared",
   "version": "1.0.0",
   "description": "This package will serve as the singular definition of types that are shared between client and server.",
   "main": "dist/index.js",
-  "types": "dist/index.d.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsc",
     "build": "tsc"

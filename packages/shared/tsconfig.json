@@ -12,5 +12,6 @@
     "strict": true,
     "skipLibCheck": true
   },
+  "extends": "../../tsconfig.json",
   "include": ["types", "index.ts"]
 }

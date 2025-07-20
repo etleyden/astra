@@ -12,12 +12,13 @@ useExpressServer(app, {
 });
 
 // 🔐 mkcert certs
+// TODO: change certs and port to be environment variables
 const httpsOptions = {
   key: fs.readFileSync("certs/localhost-key.pem"),
   cert: fs.readFileSync("certs/localhost.pem"),
 };
 
-const PORT = 3443;
+const PORT = 3001;
 
 https.createServer(httpsOptions, app).listen(PORT, () => {
   console.log(`HTTPS Server running at https://localhost:${PORT}`);

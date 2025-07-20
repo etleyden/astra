@@ -1,5 +1,5 @@
 import { Post, Param, Controller, Body } from "routing-controllers";
-import { UserController } from "controllers";
+import { UserController } from "@astra/controllers";
 
 @Controller()
 export class UserApi {
