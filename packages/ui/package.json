@@ -15,6 +15,7 @@
     "build-electron": "tsc -p electron/tsconfig.json",
     "electron": "npm run build-electron && electron ./dist-electron/main.js",
     "build": "tsc -b && vite build",
+    "watch": "vite",
     "lint": "eslint .",
     "preview": "vite preview"
   },

@@ -6,7 +6,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "dev": "tsc",
-    "build": "tsc"
+    "build": "tsc",
+    "watch": "tsc -w"
   },
   "keywords": [],
   "author": "",

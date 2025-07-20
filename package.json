@@ -12,6 +12,7 @@
   "scripts": {
     "setup": "bash bin/setup.sh",
     "dev": "bash bin/dev.sh",
+    "watch": "concurrently \"npm --workspace packages/api run watch\" \"npm --workspace packages/db run watch\" \"npm --workspace packages/controllers run watch\"",
     "stop": "bash bin/stop.sh",
     "reset-db": "bash bin/reset-db.sh",
     "clean": "bash bin/clean.sh"
@@ -29,6 +30,7 @@
     "reflect-metadata": "^0.2.2"
   },
   "devDependencies": {
+    "concurrently": "^9.2.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
   }
