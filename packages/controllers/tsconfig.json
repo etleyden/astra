@@ -10,5 +10,5 @@
     "composite": true
   },
   "extends": "../../tsconfig.json",
-  "include": ["services", "index.ts"]
+  "include": ["services", "transformers", "index.ts"]
 }

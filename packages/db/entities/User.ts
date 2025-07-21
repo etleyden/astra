@@ -14,7 +14,7 @@ export class User {
   email!: string;
 
   @Column()
-  passwordHash!: string;
+  hashedPassword!: string;
 
   @Column()
   first_name!: string;
@@ -24,8 +24,8 @@ export class User {
 
 
   @OneToMany(() => Goal, (goal) => goal.user)
-  goals: Goal[];
+  goals?: Goal[];
 
   @OneToMany(() => Account, (account) => account.user)
-  accounts: Account[];
+  accounts?: Account[];
 }

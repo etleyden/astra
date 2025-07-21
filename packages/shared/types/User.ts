@@ -6,8 +6,8 @@ export type User = {
     email: string;
     first_name: string;
     last_name?: string;
-    goals: Goal[];
-    accounts: Account[];
+    goals?: Goal[];
+    accounts?: Account[];
 }
 
 /**
@@ -19,6 +19,8 @@ export type User = {
 export type UserLogin = {
     email: string;
     password: string;
+    first_name: string;
+    last_name: string;
 }
 export type LoginResponse = {
     error?: string;
