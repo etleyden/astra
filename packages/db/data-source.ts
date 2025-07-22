@@ -3,10 +3,13 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import * as Entities from "./entities";
 import * as dotenv from "dotenv";
+import {AccountSubscriber} from "./subscribers/AccountSubscriber";
+import {GoalSubscriber} from "./subscribers/GoalSubscriber";
 
 dotenv.config();
 
 const entities = Object.values(Entities);
+
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -19,7 +22,7 @@ export const AppDataSource = new DataSource({
   logging: true,
   entities: entities,
   migrations: ["src/db/migrations/*.ts"],
-  subscribers: [],
+  subscribers: [AccountSubscriber, GoalSubscriber],
 });
 
 export const connectWithRetry = async (retries = 10, delayMs = 3000) => {
