@@ -17,6 +17,7 @@ cd $CURRENT_DIR
 # set up the Postgres DB using docker and creating the correct .env file
 SERVICES_ENV_PATH=$CURRENT_DIR/packages/controllers/.env
 DB_ENV_PATH=$CURRENT_DIR/packages/db/.env
+API_ENV_PATH=$CURRENT_DIR/packages/api/.env
 DB_ENV_TEXT=$(cat <<EOF
 # App environment variables
 NODE_ENV=development
@@ -24,7 +25,7 @@ VITE_API_URL=http://localhost:3000
 DB_USER=astra
 DB_PASSWORD=4stra!
 DB_NAME=astradb
-DB_HOST=localhost
+DB_HOST=db
 DB_PORT=5432
 EOF
 )
@@ -40,6 +41,12 @@ if [ ! -f $DB_ENV_PATH ]; then
     echo "db/.env created"
 else
     echo "db/.env already exists. Skipping..."
+fi
+if [ ! -f $API_ENV_PATH ]; then
+    echo "$DB_ENV_TEXT" > $API_ENV_PATH
+    echo "api/.env created"
+else
+    echo "api/.env already exists. Skipping..."
 fi
 echo "Setup is done!"
 

@@ -24,7 +24,7 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    container_name: vite-frontend
+    container_name: astra-frontend
     ports:
       - "3000:3000"
     volumes:
@@ -38,18 +38,23 @@ services:
     build:
       context: ../
       dockerfile: ./containers/Dockerfile.api
-    container_name: express-api
+    container_name: astra-api
     depends_on:
       db:
         condition: service_healthy
     ports:
       - "3001:3001"
-    volumes:
-      - ../packages/api:/usr/src/app
-      - /usr/src/app/node_modules
-      - ../packages/api/certs:/usr/src/app/certs
+    volumes:  
+      - ../packages/api/src:/app/packages/api/src
+      - ../packages/api/certs:/app/packages/api/certs
+      - /app/node_modules
     environment:
       - NODE_ENV=development
+      - DB_USER=astra
+      - DB_PASSWORD=4stra!
+      - DB_NAME=astradb
+      - DB_HOST=db
+      - DB_PORT=5432
     networks:
       - app-network
   pgadmin:

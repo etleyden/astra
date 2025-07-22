@@ -10,7 +10,7 @@ const entities = Object.values(Entities);
 
 export const AppDataSource = new DataSource({
   type: "postgres",
-  host: process.env.DB_HOST,
+  host: process.env.DB_HOST || "db",
   port: parseInt(process.env.DB_PORT || "5432"),
   username: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
@@ -29,6 +29,7 @@ export const connectWithRetry = async (retries = 10, delayMs = 3000) => {
       console.log("✅ Database connection successful!");
       return;
     } catch (err) {
+      console.error(err);
       console.warn(`❌ Failed to connect to DB. Retries left: ${retries - 1}`);
       retries--;
       await new Promise((res) => setTimeout(res, delayMs));
@@ -37,4 +38,15 @@ export const connectWithRetry = async (retries = 10, delayMs = 3000) => {
   console.error("❗ Could not connect to DB after multiple retries.");
   process.exit(1);
 };
+
+// Only run if file is directly executed (like `node dist/data-source.js`)
+if (require.main === module) {
+  AppDataSource.initialize()
+    .then(() => {
+      console.log("Data Source has been initialized!");
+    })
+    .catch((err) => {
+      console.error("Error during Data Source initialization:", err);
+    });
+}
 

@@ -1,14 +1,18 @@
-# containers/Dockerfile.api
-
 FROM node:20
 
-WORKDIR /usr/src/app
+# Set working dir to root of monorepo
+WORKDIR /app
 
-COPY packages/api/package*.json ./
+# Copy entire monorepo into container
+COPY . .
+
+# Install dependencies
 RUN npm install
+# Set working dir to the API package
+WORKDIR /app/packages/api
 
-COPY packages/api ./
-
+# Expose the API port
 EXPOSE 3001
 
+# Start the dev server
 CMD ["npm", "run", "dev"]

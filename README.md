@@ -29,4 +29,6 @@ Debug the development DB using pgAdmin:
 - with the docker containers up, visit http://localhost:5050
 - Login with credentials (check `containers/docker-compose.yml`)
 - Right click in the Object Explorer > Register > Server
-- Host name/address: `db`; The rest of the development credentials are in `docker-compose.yml`
+- Host name/address: `astra-dev-db`; The rest of the development credentials are in `docker-compose.yml`
+
+I've made some changed to Docker containers and I want to pass --build: `npm run dev -- -b`
