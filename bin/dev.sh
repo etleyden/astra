@@ -23,7 +23,8 @@ cd $CURRENT_DIR/containers
 docker rm -f astra-dev-db 2>/dev/null || true
 if [ "$BUILD_FLAG" = true ]; then
   echo "Running docker compose up with --build..."
-  docker compose up --build -d
+  docker compose build --no-cache
+  docker compose up -d
 else
   echo "Running docker compose up..."
   docker compose up -d

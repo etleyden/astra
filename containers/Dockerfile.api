@@ -12,7 +12,7 @@ RUN npm install
 WORKDIR /app/packages/api
 
 # Expose the API port
-EXPOSE 3001
+EXPOSE 3001 9229
 
 # Start the dev server
 CMD ["npm", "run", "dev"]
