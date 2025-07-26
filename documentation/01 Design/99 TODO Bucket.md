@@ -47,7 +47,7 @@ EXECUTE FUNCTION enforce_user_id_match();
 	* I want to be able to just refresh the database without having to rebuild the entire application
 * Consistency in directory structure between packages
 	* There is an inconsistency in directory structure for each package where some contain all of their code within a single src/ subdirectory, and others keep the code at the root of the package. I prefer the second option because the monorepo structure is already so deeply nested and complex that it's cumbersome to navigate the project. The only package that needs a src folder is the ui package, because it will also contain code in the root of the package intended for use by the build results.
-* Make a better watch command. Right now we just run `npm run watch` concurrently in each package, but there are tools out there that would allow us to have a singular watch that can streamline this to be more efficient. Check out [Turbo?](https://turborepo.com/)
+* Make a better watch command. Right now we just run `npm run watch` concurrently in each package, but there are tools out there that would allow us to have a singular watch that can streamline this to be more efficient. Check out [Turbo?](https://turborepo.com/) Ideally any change anywhere in the codebase should be recompiled and reflected in the live docker container in the development environment.
 
 ## Documentation
 * Write documentation on the transformers in the controllers/transformers package. Documentation should go in the neighboring documentation folder. 
