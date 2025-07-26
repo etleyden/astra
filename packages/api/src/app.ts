@@ -4,11 +4,18 @@ import fs from "fs";
 import https from "https";
 import { useExpressServer } from "routing-controllers";
 import { controllers } from "./routes";
+import { GlobalErrorHandler } from "./middleware/GlobalErrorHandler";
 
 const app = express();
 
+app.use(express.json());
+ 
 useExpressServer(app, {
+  routePrefix: "/api",
   controllers,
+  middlewares: [GlobalErrorHandler],
+  defaultErrorHandler: false, // we've implemented our own error handler
+  validation: true,// automatically validate @Body() with class-validator
 });
 
 // 🔐 mkcert certs
