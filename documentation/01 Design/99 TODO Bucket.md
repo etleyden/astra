@@ -40,7 +40,6 @@ EXECUTE FUNCTION enforce_user_id_match();
 	* Specify date types in TypeORM definitions
 * API and UI should get ports and HTTPS certificates from environment variables, not static/hard-coded values.
 	* This is fine for development, but once we are moving towards deployment this needs to be dynamic based on the build environment
-* Start designing tests. Easiest one to start with is linting checks with ESLint
 
 ## Workspace Quality of Life
 * Isolate a DB refresh in the development environment
@@ -52,3 +51,8 @@ EXECUTE FUNCTION enforce_user_id_match();
 ## Documentation
 * Write documentation on the transformers in the controllers/transformers package. Documentation should go in the neighboring documentation folder. 
 * There also should be documentation on all the different components for an entity (generalized). TypeORM entity def, shared type, transformer between the two, and probably some utility functions in the controllers/services folder, there's a lot to do/miss when creating or altering an entity and documentation will make adding them easier as we find new entities or change old ones during the initial development phase. 
+
+## Tests
+* Linting tests
+* API tests
+	* Login/Registration: invalid or missing values are handled properly. Errors don't return too much information. As well as simply working.
