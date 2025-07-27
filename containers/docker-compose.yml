@@ -44,14 +44,12 @@ services:
         condition: service_healthy
     ports:
       - "3001:3001"
-      - "9229:9229"
     volumes:  
       - ../packages/api/src:/app/packages/api/src
       - ../packages/api/certs:/app/packages/api/certs
       - /app/node_modules
     environment:
       - NODE_ENV=development
-      - JWT_SECRET=6c22b841-9dfc-4919-bd02-f2c417643c78 # made up development secret
       - DB_USER=astra
       - DB_PASSWORD=4stra!
       - DB_NAME=astradb

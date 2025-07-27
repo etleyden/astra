@@ -1,7 +1,5 @@
 import {Goal} from "./Goal";
 import {Account} from "./Account";
-import { IsEmail, IsOptional, IsString, MinLength } from "class-validator";
-import { IsStrongPassword } from "class-validator";
 
 export type User = {
     guid: string;
@@ -18,21 +16,11 @@ export type User = {
  * User class and while we're at it we only need the
  * login data.
  */
-export class UserLogin {
-    @IsEmail()
-    email!: string;
-    
-    // @IsStrongPassword() uncomment this in prod
-    @IsString()
-    password!: string;
-}
-
-export class UserRegistration extends UserLogin {
-    @IsString()
-    first_name?: string;
-
-    @IsString()
-    last_name?: string;
+export type UserLogin = {
+    email: string;
+    password: string;
+    first_name: string;
+    last_name: string;
 }
 export type LoginResponse = {
     error?: string;

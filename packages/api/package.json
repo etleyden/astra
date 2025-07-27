@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx ts-node-dev --respawn --inspect=0.0.0.0:9229 src/app.ts",
+    "dev": "nodemon",
     "build": "tsc",
     "watch": "tsc -w"
   },
@@ -16,11 +16,11 @@
     "body-parser": "^1.20.3",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.2",
-    "controllers": "*",
     "express": "^4.21.2",
     "multer": "^2.0.1",
     "reflect-metadata": "^0.2.2",
-    "routing-controllers": "^0.11.2"
+    "routing-controllers": "^0.11.2",
+    "controllers": "*"
   },
   "devDependencies": {
     "@types/body-parser": "^1.19.6",
@@ -29,7 +29,6 @@
     "@types/node": "^22.16.3",
     "nodemon": "^3.1.10",
     "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
     "typescript": "^5.8.3"
   }
 }

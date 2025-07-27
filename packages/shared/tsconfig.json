@@ -9,9 +9,8 @@
     "target": "ESNext",
     "moduleResolution": "nodenext",
     "esModuleInterop": true,
-    "skipLibCheck": true,
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
+    "strict": true,
+    "skipLibCheck": true
   },
   "extends": "../../tsconfig.json",
   "include": ["types", "index.ts"]
