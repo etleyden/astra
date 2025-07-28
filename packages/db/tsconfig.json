@@ -14,5 +14,5 @@
     "emitDecoratorMetadata": true
   },
   "extends": "../../tsconfig.json",
-  "include": ["entities", "data-source.ts", "index.ts"]
+  "include": ["entities", "data-source.ts", "index.ts", "subscribers"]
 }
