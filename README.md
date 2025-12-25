@@ -1,34 +1,39 @@
-## Getting Started
+# Containerized PERN Stack Template
+A minimalist and opinionated skeleton project for a React/Express/PostgreSQL app. 
 
-Dependencies (make sure these are installed first):
+Designed as a general purpose starting point for rapidly developing full stack projects. 
 
-- npm v11.4.2
-- Node v24.2.0
-- Docker
-- [mkcert](https://github.com/FiloSottile/mkcert)
+Containerized for consistent development environments and easy deployment.
 
-Obviously you should already have NPM/Node installed. This is being developed with Node v24.2.0 and npm v11.4.2
-Make sure you have [mkcert](https://github.com/FiloSottile/mkcert) installed to help set up the certs to run on HTTPS locally. This script assumes you have already run `mkcert -install` on your system.
-
-Run our setup script. Note that this will generate database credentials for the local development db (we're fine with this because it's the same for everyone). If you have your own db or if the setup script is supposed to be setting up a production environment, you will have to set up your own db credentials.
-
+## Quick Start
+### Development - Backend
+The backend can be launched by running in ``/``:
+```bash
+$ docker-compose -f docker-compose-dev.yml up
 ```
-npm run setup
+This runs the backend server on http://localhost:5000. 
+
+### Development - Frontend
+The frontend can be launched by running in ``/frontend``:
+```bash
+$ npm run start
 ```
+This runs the frontend server on http://localhost:3000. All requests will be proxied to the backend.
 
-Note that you will need to generate a JWT_SECRET token in `controllers/.env` to manage user authentication yourself. This is intentionally left out automatically to prevent development secrets ending up in production, potentially exposing critical credentials.
+### Deployment
+Both the frontend and backend can be deployed by running in ``/``:
+```bash
+$ docker-compose up
+```
+This runs the deployed website on http://localhost:8000.
 
-## I want to...
+## Overview
+### Backend Structure
+The backend uses the MVC pattern where the components are described as follows:
+- ``app.ts`` - The **entry point** to the server. All routers are imported and used here.
+- ``routes/`` - The **URL handlers** for the server. These handlers forward requests to the appropriate controller.
+- ``controllers/`` - The **route callback** functions. These functions convert requests into commands for the model and/or routes.
+- ``models/`` - The **database query** functions. These are functions that run parameterised queries based on arguments.
 
-Work in a development environment: `npm run dev` in the root directory. This will build everything and fire up docker containers for you. When you're done, run `npm run stop`.
-
-Compile the Electron app: `npm run build-electron && npm run electron` in `packages/ui/`.
-
-Debug the development DB using pgAdmin:
-
-- with the docker containers up, visit http://localhost:5050
-- Login with credentials (check `containers/docker-compose.yml`)
-- Right click in the Object Explorer > Register > Server
-- Host name/address: `astra-dev-db`; The rest of the development credentials are in `docker-compose.yml`
-
-I've made some changed to Docker containers and I want to pass --build: `npm run dev -- -b`
+### Frontend Structure
+The frontend is the standard configuration created by ``create-react-app``. The project is structured by **grouping features**
